@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
+[AllowAnonymous] // turn off authorizations till front-end is modified
 public class ActivitiesController : BaseApiController
 {
     [HttpGet] // api/activities
