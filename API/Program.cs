@@ -11,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+// builder.Services.AddAutoMapper(typeof(Program));
+// builder.Services.AddControllersWithViews();
+
 builder.Services.AddControllers(opt => {
     var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
     opt.Filters.Add(new AuthorizeFilter(policy));
