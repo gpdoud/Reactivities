@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Domain;
+﻿namespace Domain;
 
 public class Activity
 {
@@ -11,4 +9,8 @@ public class Activity
     public string Category { get; set; }
     public string City { get; set; }
     public string Venue { get; set; }
+    public bool IsCancelled { get; set; }
+
+    public ICollection<ActivityAttendee> Attendees { get; set; } = new List<ActivityAttendee>();
+
 }
