@@ -5,6 +5,7 @@ import { FormField, Label } from "semantic-ui-react";
         placeholder: string;
         name: string;
         label?: string;
+        type?: string;
     }
 
 export default function MyTextInput(props: Props) {
