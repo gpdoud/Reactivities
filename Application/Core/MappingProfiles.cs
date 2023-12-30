@@ -5,23 +5,20 @@ using Domain;
 
 namespace Application;
 
-public class MappingProfiles : Profile
+public class MappingProfiles : AutoMapper.Profile
 {
     public MappingProfiles()
     {
-        // added the var config ... wrapper.
-        var config = new MapperConfiguration(cfg => {
-            cfg.CreateMap<Activity, Activity>();
+        CreateMap<Activity, Activity>();
 
-            cfg.CreateMap<Activity, ActivityDto>()
-                .ForMember(d => d.HostUsername, o => o.MapFrom(s => s.Attendees.FirstOrDefault(x => x.IsHost).AppUser.UserName));
-            
-            //cfg.CreateMap<List<Activity>, List<ActivityDto>>();
+        CreateMap<Activity, ActivityDto>()
+            .ForMember(d => d.HostUsername, o => o.MapFrom(s => s.Attendees.FirstOrDefault(x => x.IsHost).AppUser.UserName));
 
-            cfg.CreateMap<ActivityAttendee, Profile>()
-                .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.AppUser.DisplayName))
-                .ForMember(d => d.Username, o => o.MapFrom(s => s.AppUser.UserName))
-                .ForMember(d => d.Bio, o => o.MapFrom(s => s.AppUser.Bio));
-        });
+        CreateMap<ActivityAttendee, Profile>()
+            .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.AppUser.DisplayName))
+            .ForMember(d => d.Username, o => o.MapFrom(s => s.AppUser.UserName))
+            .ForMember(d => d.Bio, o => o.MapFrom(s => s.AppUser.Bio))
+            .ForMember(d => d.Image, o => o.Ignore());
+
     }
 }
